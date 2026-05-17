@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HK Garage | Officina Meccanica Costa di Mezzate</title>
+  <meta name="description" content="HK Garage SNC di Harshit & Karan. Riparazioni, manutenzione e assistenza auto a Costa di Mezzate (BG).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --bg-card: #ffffff;
+      --text: #2c3136;
+      --text-muted: #5f6b78;
+      --red: #d32f2f;
+      --red-dark: #b71c1c;
+      --black: #1a1c1e;
+      --shadow: 0 10px 40px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+    .navbar { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+    .logo-container { display: flex; align-items: center; gap: 15px; }
+    .logo-img-wrapper { position: relative; width: 85px; height: 68px; display: flex; align-items: center; justify-content: center; border-radius: 8px; overflow: hidden; }
+    .logo-img-wrapper img { width: 100%; height: 100%; object-fit: contain; background-color: #0b0b0b; }
+    .logo-img-wrapper::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 3px 1px rgba(255, 255, 255, 1); border-radius: 8px; pointer-events: none; }
+    .logo-text { font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; color: var(--black); }
+    .logo-text span { display: block; font-size: 0.75rem; color: var(--red); font-weight: 700; }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: color 0.3s; color: var(--text); }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a.nav-news { color: var(--red); font-weight: 800; display: flex; align-items: center; gap: 6px; }
+    .nav-links a.nav-news::before { content: ""; display: inline-block; width: 6px; height: 6px; background-color: var(--red); border-radius: 50%; box-shadow: 0 0 6px rgba(211, 47, 47, 0.6); }
+    .nav-links a.nav-news:hover { color: var(--red-dark); }
+    .btn-contact { background-color: var(--black); color: white; padding: 10px 24px; border-radius: 4px; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; transition: all 0.3s ease; }
+    .btn-contact:hover { background-color: var(--red); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3); }
+    .hero { margin-top: 90px; padding: 100px 0; background: linear-gradient(rgba(240, 242, 245, 0.88), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1530906358829-e84b2769270f?auto=format&fit=crop&w=1920&q=80') center/cover; min-height: 80vh; display: flex; align-items: center; }
+    .hero-content { max-width: 650px; }
+    .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; color: var(--black); }
+    .hero h1 span { color: var(--red); }
+    .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 500; }
+    .hero-buttons { display: flex; gap: 20px; }
+    .btn-primary { background-color: var(--red); color: white; padding: 15px 30px; border-radius: 4px; font-weight: 800; font-size: 1rem; text-transform: uppercase; transition: transform 0.3s, background 0.3s; display: inline-block; }
+    .btn-primary:hover { transform: translateY(-3px); background-color: var(--red-dark); }
+    .btn-secondary { background-color: transparent; border: 2px solid var(--black); color: var(--black); padding: 13px 30px; border-radius: 4px; font-weight: 800; font-size: 1rem; text-transform: uppercase; transition: border-color 0.3s, color 0.3s; display: inline-block; }
+    .btn-secondary:hover { border-color: var(--red); color: var(--red); }
+    .services { padding: 100px 0; background-color: var(--bg); }
+    .section-title { text-align: center; margin-bottom: 60px; }
+    .section-title h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; color: var(--black); }
+    .section-title .line { width: 60px; height: 4px; background-color: var(--red); margin: 0 auto; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .service-card { background-color: var(--bg-card); padding: 40px 30px; border-radius: 8px; border-bottom: 4px solid transparent; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; box-shadow: var(--shadow); }
+    .service-card:hover { border-color: var(--red); transform: translateY(-5px); box-shadow: 0 15px 45px rgba(0,0,0,0.1); }
+    .service-icon { font-size: 2.5rem; color: var(--red); margin-bottom: 20px; font-weight: 900; }
+    .service-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; color: var(--black); }
+    .service-card p { color: var(--text-muted); font-weight: 500; }
+    .about { padding: 100px 0; background-color: var(--bg-card); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-img { border-radius: 8px; overflow: hidden; position: relative; }
+    .about-img img { width: 100%; height: auto; display: block; }
+    .about-img::after { content: ""; position: absolute; inset: 0; border: 4px solid var(--red); transform: translate(15px, 15px); z-index: -1; border-radius: 8px; }
+    .about-text h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; color: var(--black); }
+    .about-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; font-weight: 500; }
+    .about-features { margin-top: 30px; }
+    .about-features li { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-weight: 700; font-size: 1.1rem; color: var(--text); }
+    .about-features li::before { content: "✓"; color: var(--red); font-weight: 900; font-size: 1.3rem; }
+    .news { padding: 100px 0; background-color: var(--bg); }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .news-card { background-color: var(--bg-card); padding: 30px; border-radius: 8px; box-shadow: var(--shadow); border-left: 4px solid var(--red); transition: transform 0.3s, box-shadow 0.3s; }
+    .news-card:hover { transform: translateY(-5px); box-shadow: 0 15px 45px rgba(0,0,0,0.1); }
+    .news-date { font-size: 0.85rem; color: var(--red); font-weight: 800; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .news-card h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--black); font-weight: 800; line-height: 1.3; }
+    .news-card p { color: var(--text-muted); margin-bottom: 20px; font-weight: 500; font-size: 0.95rem; }
+    .news-link { font-weight: 800; color: var(--black); transition: color 0.3s; font-size: 0.9rem; text-transform: uppercase; }
+    .news-link:hover { color: var(--red); }
+    .contact { padding: 100px 0; background-color: var(--bg-card); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
+    .contact-info { padding: 40px; background-color: var(--bg); border-radius: 8px; box-shadow: var(--shadow); border-top: 4px solid var(--red); }
+    .contact-info h3 { font-size: 1.8rem; font-weight: 900; margin-bottom: 30px; text-transform: uppercase; color: var(--black); }
+    .info-item { margin-bottom: 25px; }
+    .info-item h4 { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; font-weight: 800; }
+    .info-item p { font-weight: 600; color: var(--text); }
+    form { display: grid; gap: 20px; background-color: var(--bg); padding: 40px; border-radius: 8px; box-shadow: var(--shadow); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    input, textarea { width: 100%; padding: 15px; background-color: #ffffff; border: 1px solid rgba(0,0,0,0.1); color: var(--text); border-radius: 4px; font-family: inherit; font-weight: 500; }
+    input:focus, textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1); }
+    button[type="submit"] { background-color: var(--red); color: white; border: none; padding: 15px; font-weight: 900; text-transform: uppercase; font-size: 1rem; border-radius: 4px; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
+    button[type="submit"]:hover { background-color: var(--red-dark); }
+    footer { padding: 40px 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.1); background-color: var(--bg); color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+    @media (max-width: 900px) {
+      .nav-links, .btn-contact { display: none; }
+      .hero h1 { font-size: 2.5rem; }
+      .about-grid, .contact-grid, .form-row { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; }
+      form { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <div class="logo-container">
+        <div class="logo-img-wrapper"><img src="https://i.ibb.co/JFR6RtjJ/PHOTO-2026-05-13-22-59-50.jpg" alt="Logo HK Garage"></div>
+        <div class="logo-text">HK Garage<span>SNC di Harshit & Karan</span></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#chi-siamo">Chi Siamo</a></li>
+        <li><a href="#news" class="nav-news">News</a></li>
+      </ul>
+      <a href="#contatti" class="btn-contact">Prenota</a>
+    </div>
+  </header>
+  <section id="home" class="hero"><div class="container hero-content"><h1>La tua officina di <span>fiducia</span> a Costa di Mezzate.</h1><p>Manutenzione, riparazioni e diagnosi elettronica. Affida la tua auto a chi ha la meccanica nel sangue. Interventi precisi, chiari e senza sorprese.</p><div class="hero-buttons"><a href="#servizi" class="btn-primary">Scopri i servizi</a><a href="#contatti" class="btn-secondary">Contattaci ora</a></div></div></section>
+  <section id="servizi" class="services"><div class="container"><div class="section-title"><h2>I Nostri Servizi</h2><div class="line"></div></div><div class="services-grid"><div class="service-card"><div class="service-icon">01</div><h3>Riparazioni Meccaniche</h3><p>Interventi su motore, freni, frizione e sospensioni. Ripariamo la tua auto con ricambi di qualità, garantendo affidabilità su strada.</p></div><div class="service-card"><div class="service-icon">02</div><h3>Tagliandi e Manutenzione</h3><p>Manutenzione ordinaria e straordinaria. Sostituzione olio, filtri, cinghie e controlli completi per viaggiare in totale sicurezza.</p></div><div class="service-card"><div class="service-icon">03</div><h3>Diagnosi Elettronica</h3><p>Strumentazione all'avanguardia per leggere la centralina, individuare le spie di errore e risolvere problemi elettrici ed elettronici.</p></div></div></div></section>
+  <section id="chi-siamo" class="about"><div class="container about-grid"><div class="about-img"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80" alt="Meccanico al lavoro"></div><div class="about-text"><h2>Passione per i motori</h2><p>Siamo <strong>Harshit e Karan</strong>, due giovani meccanici che hanno trasformato la passione per le auto in una professione. Abbiamo aperto <strong>HK Garage</strong> con un obiettivo preciso: offrire un servizio onesto, diretto e di altissima qualità.</p><p>Non ci piacciono i giri di parole. Ti spieghiamo il problema, ti facciamo un preventivo chiaro e ti riconsegniamo l'auto perfetta.</p><ul class="about-features"><li>Preventivi trasparenti e chiari</li><li>Tempi di consegna rispettati</li><li>Attenzione maniacale ai dettagli</li></ul></div></div></section>
+  <section id="news" class="news"><div class="container"><div class="section-title"><h2>News & Aggiornamenti</h2><div class="line"></div></div><div class="news-grid"><div class="news-card"><div class="news-date">Ultim'ora</div><h3>Novità Revisioni Auto 2026</h3><p>Scopri cosa cambia con le nuove normative sui controlli delle emissioni. Mettiti in regola prima della scadenza per evitare sanzioni.</p><a href="#" class="news-link">Leggi di più &rarr;</a></div><div class="news-card"><div class="news-date">Consiglio del Mese</div><h3>Aria Condizionata: Quando ricaricare?</h3><p>L'estate è alle porte. L'importanza di igienizzare l'impianto e ricaricare il gas prima che inizino i veri caldi stagionali.</p><a href="#" class="news-link">Leggi di più &rarr;</a></div><div class="news-card"><div class="news-date">Mondo Auto</div><h3>Auto Elettriche e Ibride</h3><p>Come cambia la manutenzione periodica per i veicoli di nuova generazione. La nostra officina è aggiornata per le nuove tecnologie.</p><a href="#" class="news-link">Leggi di più &rarr;</a></div></div></div></section>
+  <section id="contatti" class="contact"><div class="container"><div class="section-title"><h2>Contattaci</h2><div class="line"></div></div><div class="contact-grid"><div class="contact-info"><h3>Vieni a trovarci</h3><div class="info-item"><h4>Indirizzo</h4><p>Via Consortile della Conta, 3<br>24060 Costa di Mezzate (BG)</p></div><div class="info-item"><h4>Telefono</h4><p>+39 3XX XXX XXXX</p></div><div class="info-item"><h4>Orari di Apertura</h4><p>Lun - Ven: 08:00 - 12:00 / 14:00 - 18:30<br>Sabato: 08:00 - 12:00</p></div></div><div class="contact-form"><form onsubmit="event.preventDefault(); alert('Messaggio inviato! (Demo)');"><div class="form-row"><input type="text" placeholder="Il tuo Nome" required><input type="text" placeholder="La tua Auto (Es. Golf 7)" required></div><div class="form-row"><input type="tel" placeholder="Telefono" required><input type="email" placeholder="Email"></div><textarea rows="5" placeholder="Descrivi il problema o il servizio di cui hai bisogno..." required></textarea><button type="submit">Richiedi Preventivo / Appuntamento</button></form></div></div></div></section>
+  <footer><div class="container"><p>&copy; 2026 HK Garage SNC di Harshit & Karan. Tutti i diritti riservati.</p></div></footer>
+</body>
+</html>
