@@ -94,13 +94,60 @@
     button[type="submit"] { background-color: var(--red); color: white; border: none; padding: 15px; font-weight: 900; text-transform: uppercase; font-size: 1rem; border-radius: 4px; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
     button[type="submit"]:hover { background-color: var(--red-dark); }
     footer { padding: 40px 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.1); background-color: var(--bg); color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: var(--black);
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
     @media (max-width: 900px) {
-      .nav-links, .btn-contact { display: none; }
       .hero h1 { font-size: 2.5rem; }
       .about-grid, .contact-grid, .form-row { grid-template-columns: 1fr; }
       .hero-buttons { flex-direction: column; }
       .btn-primary, .btn-secondary { text-align: center; }
       form { padding: 20px; }
+      .nav-links, .btn-contact { display: none; }
+      .menu-toggle { display: block; }
+      .navbar { position: relative; }
+      .nav-mobile {
+        display: none;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        padding: 14px 20px 18px;
+        z-index: 101;
+      }
+      .nav-mobile.open { display: block; }
+      .nav-mobile a {
+        display: block;
+        padding: 12px 0;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--text);
+        border-top: 1px solid rgba(0,0,0,0.06);
+      }
+      .nav-mobile a:first-child { border-top: 0; }
+      .nav-mobile a.nav-news { color: var(--red); }
+      .nav-mobile a.nav-news::before { content: "•"; margin-right: 8px; }
+      .mobile-contact {
+        display: block;
+        margin-top: 10px;
+        background: var(--black);
+        color: #fff;
+        text-align: center;
+        padding: 12px 16px;
+        border-radius: 4px;
+        font-weight: 800;
+      }
     }
   </style>
 </head>
@@ -118,13 +165,29 @@
         <li><a href="#news" class="nav-news">News</a></li>
       </ul>
       <a href="#contatti" class="btn-contact">Prenota</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Apri menu">☰</button>
+      <div class="nav-mobile" id="navMobile">
+        <a href="#home">Home</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#news" class="nav-news">News</a>
+        <a href="#contatti" class="mobile-contact">Prenota</a>
+      </div>
     </div>
   </header>
+
   <section id="home" class="hero"><div class="container hero-content"><h1>La tua officina di <span>fiducia</span> a Costa di Mezzate.</h1><p>Manutenzione, riparazioni e diagnosi elettronica. Affida la tua auto a chi ha la meccanica nel sangue. Interventi precisi, chiari e senza sorprese.</p><div class="hero-buttons"><a href="#servizi" class="btn-primary">Scopri i servizi</a><a href="#contatti" class="btn-secondary">Contattaci ora</a></div></div></section>
   <section id="servizi" class="services"><div class="container"><div class="section-title"><h2>I Nostri Servizi</h2><div class="line"></div></div><div class="services-grid"><div class="service-card"><div class="service-icon">01</div><h3>Riparazioni Meccaniche</h3><p>Interventi su motore, freni, frizione e sospensioni. Ripariamo la tua auto con ricambi di qualità, garantendo affidabilità su strada.</p></div><div class="service-card"><div class="service-icon">02</div><h3>Tagliandi e Manutenzione</h3><p>Manutenzione ordinaria e straordinaria. Sostituzione olio, filtri, cinghie e controlli completi per viaggiare in totale sicurezza.</p></div><div class="service-card"><div class="service-icon">03</div><h3>Diagnosi Elettronica</h3><p>Strumentazione all'avanguardia per leggere la centralina, individuare le spie di errore e risolvere problemi elettrici ed elettronici.</p></div></div></div></section>
   <section id="chi-siamo" class="about"><div class="container about-grid"><div class="about-img"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80" alt="Meccanico al lavoro"></div><div class="about-text"><h2>Passione per i motori</h2><p>Siamo <strong>Harshit e Karan</strong>, due giovani meccanici che hanno trasformato la passione per le auto in una professione. Abbiamo aperto <strong>HK Garage</strong> con un obiettivo preciso: offrire un servizio onesto, diretto e di altissima qualità.</p><p>Non ci piacciono i giri di parole. Ti spieghiamo il problema, ti facciamo un preventivo chiaro e ti riconsegniamo l'auto perfetta.</p><ul class="about-features"><li>Preventivi trasparenti e chiari</li><li>Tempi di consegna rispettati</li><li>Attenzione maniacale ai dettagli</li></ul></div></div></section>
   <section id="news" class="news"><div class="container"><div class="section-title"><h2>News & Aggiornamenti</h2><div class="line"></div></div><div class="news-grid"><div class="news-card"><div class="news-date">Ultim'ora</div><h3>Novità Revisioni Auto 2026</h3><p>Scopri cosa cambia con le nuove normative sui controlli delle emissioni. Mettiti in regola prima della scadenza per evitare sanzioni.</p><a href="#" class="news-link">Leggi di più &rarr;</a></div><div class="news-card"><div class="news-date">Consiglio del Mese</div><h3>Aria Condizionata: Quando ricaricare?</h3><p>L'estate è alle porte. L'importanza di igienizzare l'impianto e ricaricare il gas prima che inizino i veri caldi stagionali.</p><a href="#" class="news-link">Leggi di più &rarr;</a></div><div class="news-card"><div class="news-date">Mondo Auto</div><h3>Auto Elettriche e Ibride</h3><p>Come cambia la manutenzione periodica per i veicoli di nuova generazione. La nostra officina è aggiornata per le nuove tecnologie.</p><a href="#" class="news-link">Leggi di più &rarr;</a></div></div></div></section>
   <section id="contatti" class="contact"><div class="container"><div class="section-title"><h2>Contattaci</h2><div class="line"></div></div><div class="contact-grid"><div class="contact-info"><h3>Vieni a trovarci</h3><div class="info-item"><h4>Indirizzo</h4><p>Via Consortile della Conta, 3<br>24060 Costa di Mezzate (BG)</p></div><div class="info-item"><h4>Telefono</h4><p>+39 3XX XXX XXXX</p></div><div class="info-item"><h4>Orari di Apertura</h4><p>Lun - Ven: 08:00 - 12:00 / 14:00 - 18:30<br>Sabato: 08:00 - 12:00</p></div></div><div class="contact-form"><form onsubmit="event.preventDefault(); alert('Messaggio inviato! (Demo)');"><div class="form-row"><input type="text" placeholder="Il tuo Nome" required><input type="text" placeholder="La tua Auto (Es. Golf 7)" required></div><div class="form-row"><input type="tel" placeholder="Telefono" required><input type="email" placeholder="Email"></div><textarea rows="5" placeholder="Descrivi il problema o il servizio di cui hai bisogno..." required></textarea><button type="submit">Richiedi Preventivo / Appuntamento</button></form></div></div></div></section>
   <footer><div class="container"><p>&copy; 2026 HK Garage SNC di Harshit & Karan. Tutti i diritti riservati.</p></div></footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navMobile = document.getElementById('navMobile');
+    menuToggle?.addEventListener('click', () => navMobile.classList.toggle('open'));
+    navMobile?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMobile.classList.remove('open')));
+  </script>
 </body>
 </html>
